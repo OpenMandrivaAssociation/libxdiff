@@ -5,7 +5,7 @@
 Summary:	Create diffs/patches for text/binary files
 Name:		libxdiff
 Version:	0.22
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
@@ -45,7 +45,6 @@ Summary:	Header files for libxdiff library
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{name}-devel
 
 %description -n	%{develname}
 The LibXDiff library implements basic and yet complete functionalities
