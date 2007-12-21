@@ -12,6 +12,7 @@ URL:		http://www.xmailserver.org/xdiff-lib.html
 Source0:	http://www.xmailserver.org/libxdiff-%{version}.tar.gz
 Patch0:		am-fixes.patch
 BuildRequires:	autoconf automake libtool
+BuildRoot:	%{_tmppath}/%{name}-%{version}-build	
 
 %description
 The LibXDiff library implements basic and yet complete functionalities
