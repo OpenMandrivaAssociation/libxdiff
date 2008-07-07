@@ -5,14 +5,16 @@
 Summary:	Create diffs/patches for text/binary files
 Name:		libxdiff
 Version:	0.22
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
 Source0:	http://www.xmailserver.org/libxdiff-%{version}.tar.gz
 Patch0:		am-fixes.patch
-BuildRequires:	autoconf automake libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-build	
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The LibXDiff library implements basic and yet complete functionalities
@@ -62,7 +64,7 @@ Header files for libxdiff library.
 %prep
 
 %setup -q
-%patch0
+%patch0 -p0
 
 %build
 %serverbuild
@@ -79,9 +81,6 @@ rm -rf %{buildroot}
 
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
 %endif
@@ -89,6 +88,9 @@ rm -rf %{buildroot}
 %if %mdkversion < 200900
 %postun	-n %{libname} -p /sbin/ldconfig
 %endif
+
+%clean
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
