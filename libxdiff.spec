@@ -5,7 +5,7 @@
 Summary:	Create diffs/patches for text/binary files
 Name:		libxdiff
 Version:	0.22
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
