@@ -103,3 +103,44 @@ rm -rf %{buildroot}
 %{_libdir}/*.so
 %{_libdir}/*.*a
 %{_mandir}/man3/xdiff.3*
+
+
+%changelog
+* Sat Aug 20 2011 Oden Eriksson <oeriksson@mandriva.com> 0.23-1mdv2012.0
++ Revision: 695869
+- 0.23
+
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.22-5mdv2011.0
++ Revision: 620239
+- the mass rebuild of 2010.0 packages
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 0.22-4mdv2010.0
++ Revision: 429849
+- rebuild
+
+* Mon Jul 07 2008 Oden Eriksson <oeriksson@mandriva.com> 0.22-3mdv2009.0
++ Revision: 232376
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri Dec 21 2007 Olivier Blin <blino@mandriva.org> 0.22-2mdv2008.1
++ Revision: 136571
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Tue Sep 04 2007 Oden Eriksson <oeriksson@mandriva.com> 0.22-2mdv2008.0
++ Revision: 79447
+- fix deps
+
+* Tue Sep 04 2007 Oden Eriksson <oeriksson@mandriva.com> 0.22-1mdv2008.0
++ Revision: 79366
+- Import libxdiff
+
+
+
+* Tue Sep 04 2007 Oden Eriksson <oeriksson@mandriva.com> 0.22-1mdv2008.0
+- initial Mandriva package (opensuse import)
