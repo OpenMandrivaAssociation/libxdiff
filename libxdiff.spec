@@ -1,20 +1,19 @@
-%define	major 0
+%define	major 1
 %define	libname %mklibname xdiff %{major}
 %define develname %mklibname xdiff -d
 
 Summary:	Create diffs/patches for text/binary files
 Name:		libxdiff
-Version:	0.23
-Release:	2
+Version:	1.0
+Release:	1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
-Source0:	http://www.xmailserver.org/libxdiff-%{version}.tar.gz
-Patch0:		am-fixes.patch
+Source0:	https://github.com/spotrh/libxdiff/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
+Patch0:	libxdiff-1.0-big-endian.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The LibXDiff library implements basic and yet complete functionalities
@@ -63,23 +62,16 @@ Header files for libxdiff library.
 
 %prep
 
-%setup -q
-%patch0 -p1
+%setup -q -n %{name}-%{version}
+%autopatch -p1
 
 %build
-%serverbuild
-autoreconf -fis
+%configure --disable-static
 
-%configure2_5x \
-    --with-pic \
-    --disable-rpath
-
-%make
+%make_build
 
 %install
-rm -rf %{buildroot}
-
-%makeinstall_std
+%make_install
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -89,20 +81,18 @@ rm -rf %{buildroot}
 %postun	-n %{libname} -p /sbin/ldconfig
 %endif
 
-%clean
-rm -rf %{buildroot}
-
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog
-%{_libdir}/*.so.*
+%doc AUTHORS COPYING ChangeLog
+%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_includedir}/*.h
+%{_includedir}/xdiff
 %{_libdir}/*.so
-%{_libdir}/*.*a
-%{_mandir}/man3/xdiff.3*
+%{_libdir}/pkgconfig/libxdiff.pc
 
 
 %changelog
