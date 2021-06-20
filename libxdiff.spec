@@ -4,12 +4,12 @@
 
 Summary:	Create diffs/patches for text/binary files
 Name:		libxdiff
-Version:	0.23
-Release:	2
+Version:	1.0
+Release:	1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
-Source0:	http://www.xmailserver.org/libxdiff-%{version}.tar.gz
+Source0:	https://github.com/spotrh/libxdiff/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Patch0:		am-fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -63,7 +63,7 @@ Header files for libxdiff library.
 
 %prep
 
-%setup -q
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 
 %build
