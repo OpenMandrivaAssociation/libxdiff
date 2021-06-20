@@ -10,7 +10,7 @@ License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
 Source0:	https://github.com/spotrh/libxdiff/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
-Patch0:		am-fixes.patch
+#Patch0:		am-fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -64,7 +64,7 @@ Header files for libxdiff library.
 %prep
 
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+#patch0 -p1
 
 %build
 %serverbuild
