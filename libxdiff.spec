@@ -10,11 +10,10 @@ License:	LGPL
 Group:		System/Libraries
 URL:		http://www.xmailserver.org/xdiff-lib.html
 Source0:	https://github.com/spotrh/libxdiff/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
-#Patch0:		am-fixes.patch
+Patch0:	libxdiff-1.0-big-endian.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The LibXDiff library implements basic and yet complete functionalities
@@ -64,22 +63,15 @@ Header files for libxdiff library.
 %prep
 
 %setup -q -n %{name}-%{version}
-#patch0 -p1
+%autopatch -p1
 
 %build
-%serverbuild
-autoreconf -fis
+%configure --disable-static
 
-%configure2_5x \
-    --with-pic \
-    --disable-rpath
-
-%make
+%make_build
 
 %install
-rm -rf %{buildroot}
-
-%makeinstall_std
+%make_install
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -88,9 +80,6 @@ rm -rf %{buildroot}
 %if %mdkversion < 200900
 %postun	-n %{libname} -p /sbin/ldconfig
 %endif
-
-%clean
-rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
