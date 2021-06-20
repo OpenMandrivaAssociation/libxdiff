@@ -1,4 +1,4 @@
-%define	major 0
+%define	major 1
 %define	libname %mklibname xdiff %{major}
 %define develname %mklibname xdiff -d
 
@@ -84,14 +84,15 @@ Header files for libxdiff library.
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog
-%{_libdir}/*.so.*
+%doc AUTHORS COPYING ChangeLog
+%{_libdir}/*.so.%{major}
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_includedir}/*.h
+%{_includedir}/xdiff
 %{_libdir}/*.so
-%{_libdir}/*.*a
-%{_mandir}/man3/xdiff.3*
+%{_libdir}/pkgconfig/libxdiff.pc
 
 
 %changelog
