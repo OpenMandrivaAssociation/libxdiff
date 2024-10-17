@@ -8,7 +8,7 @@ Version:	1.0
 Release:	1
 License:	LGPL
 Group:		System/Libraries
-URL:		http://www.xmailserver.org/xdiff-lib.html
+URL:		https://www.xmailserver.org/xdiff-lib.html
 Source0:	https://github.com/spotrh/libxdiff/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Patch0:	libxdiff-1.0-big-endian.patch
 BuildRequires:	autoconf
