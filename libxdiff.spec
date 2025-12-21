@@ -11,6 +11,8 @@ Group:		System/Libraries
 URL:		https://www.xmailserver.org/xdiff-lib.html
 Source0:	https://github.com/spotrh/libxdiff/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Patch0:	libxdiff-1.0-big-endian.patch
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
